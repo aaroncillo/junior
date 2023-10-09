@@ -1,0 +1,37 @@
+<h1>Listado de productos</h1>
+<a href="<%= new_sale_path %>" class="btn btn-primary btn-icon-split">
+  <span class="icon text-white-50">
+    <i class="fas fa-flag"></i>
+  </span>
+  <span class="text">Crear Producto</span>
+</a>
+<a href="<%= products_path(format: :xlsx) %>" class="btn btn-success btn-icon-split">
+  <span class="icon text-white-50">
+      <i class="fas fa-file"></i>
+  </span>
+  <span class="text">Exportar a Excel</span>
+</a>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Fecha</th>
+      <th>Acción</th>
+  </thead>
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.id %></td>
+        <td><%= sale.product.tipo_producto %></td> <!-- Suponiendo que quieres mostrar el nombre del producto -->
+        <td><%= sale.product.precio %></td>
+        <td><%= sale.cantidad %></td>
+        <td><%= sale.fecha %></td>
+        <td>botons</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,7 @@
+<%= simple_form_for [@product, @sale] do |f| %>
+
+  <%= f.select :product_id, options_from_collection_for_select(Product.all, "id", "tipo_producto") %>
+  <%= f.input :cantidad %>
+  <%= f.input :fecha, order: [:day, :month, :year], html5: true %> %>
+  <%= f.submit "Registrar Venta" %>
+<% end %>
