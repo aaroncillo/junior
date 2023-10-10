@@ -10,3 +10,7 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+.my-dropdown-content {
+  right: 0;  /* Alinea el borde derecho del menú desplegable con el borde derecho del botón */
+  left: auto;  /* Desactiva el comportamiento predeterminado de Bootstrap */
+}

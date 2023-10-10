@@ -1,6 +1,20 @@
 class SalesController < ApplicationController
   def index
-    @sales = Sale.all
+    if current_user.role == 'admin'
+      admin_products_ids = Product.where(user: current_user).pluck(:id)
+      @all_sales = Sale.where(product_id: admin_products_ids)
+      @pagy, @sales = pagy(@all_sales, items: 5)
+    else
+      @all_sales = Sale.where(user: current_user)
+      @pagy, @sales = pagy(@all_sales, items: 5)
+    end
+
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="Listado de productos.xlsx"'
+      }
+    end
   end
 
   def new

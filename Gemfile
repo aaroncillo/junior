@@ -78,7 +78,12 @@ group :test do
 
 end
 
-
 # Mis gemas
 
 gem "cloudinary"
+
+gem "pagy", "~> 6.1"
+
+gem 'axlsx_rails'
+
+gem "tailwindcss-rails", "~> 2.0"

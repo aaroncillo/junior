@@ -1,4 +1,4 @@
-<h1>Mis Productos</h1>
+<h1>Mi Stock</h1>
 <%= link_to "Añadir Nuevo Producto", new_product_path, class: "btn btn-success" %>
 
 <table class="table mt-2">
@@ -21,13 +21,27 @@
         <td><%= product.cantidad %></td>
         <td>
           <% sold_quantity = Sale.where(product: product).sum(:cantidad) %>
-          <%= product.cantidad - sold_quantity %>
+          <%= [0, product.cantidad.to_i - sold_quantity].max %>
         </td>
         <td>
-          <%= link_to "Editar", edit_product_path(product), class: "btn btn-primary" %>
-          <%= link_to "Eliminar", product_path(product), method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" }, class: "btn btn-danger" %>
+          <%= link_to product_path(product), class:"btn btn-danger", data:{turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+            <i class="fa-solid fa-circle-minus"></i>
+          <% end %>
+
+          <%= link_to edit_product_path(product), class:"btn btn-primary" do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" class="text-right"><strong>Total de Inversión:</strong></td>
+      <td><%= @total_inv %></td>
+      <td class="text-right"><strong>Total de Stock:</strong></td>
+      <td><%= @total_stock %></td>
+    </tr>
+  </tfoot>
 </table>
+<%= pagy_bootstrap_nav(@pagy).html_safe %>

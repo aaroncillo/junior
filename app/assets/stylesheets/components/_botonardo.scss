@@ -99,7 +99,7 @@
   color: #f19c2b;
 }
 
-button {
+.special-button {
   position: absolute;
   padding: 0;
   width: 135px;
@@ -112,7 +112,7 @@ button {
   transition: all 0.3s ease-in-out;
 }
 
-button::before {
+.special-button::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -126,7 +126,7 @@ button::before {
   z-index: -1;
 }
 
-button::after {
+.special-button::after {
   content: "¡Entrar!";
   position: absolute;
   top: 50%;

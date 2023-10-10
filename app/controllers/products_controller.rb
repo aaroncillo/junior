@@ -4,6 +4,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = current_user.products
+    @total_stock = @products.sum(&:cantidad)
+    @total_inv = @products.sum { |product| product.cantidad * product.precio }
+    @pagy, @products = pagy(@products, items: 5)
   end
 
   def new
