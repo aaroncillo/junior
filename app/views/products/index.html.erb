@@ -19,7 +19,10 @@
         <td><%= product.tipo_producto %></td>
         <td><%= product.precio %></td>
         <td><%= product.cantidad %></td>
-        <td></td>
+        <td>
+          <% sold_quantity = Sale.where(product: product).sum(:cantidad) %>
+          <%= product.cantidad - sold_quantity %>
+        </td>
         <td>
           <%= link_to "Editar", edit_product_path(product), class: "btn btn-primary" %>
           <%= link_to "Eliminar", product_path(product), method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" }, class: "btn btn-danger" %>
