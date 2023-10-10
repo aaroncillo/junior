@@ -1,9 +1,8 @@
-  <div class="text-center">
-    <%= simple_form_for [@product, @sale] do |f| %>
-      <%= f.input :tipo_producto, autofocus: true  %>
-      <%= f.input :precio  %>
-      <%= f.input :cantidad  %>
-      <%= f.input :fecha  %>
-      <%= f.submit class: "btn btn-success", data:{turbo_method: :update, turbo_confirm: "Are you sure?" } %>
-    <% end %>
-  </div>
+<h1>Añadir Nuevo Producto</h1>
+
+<%= simple_form_for @product do |f| %>
+  <%= f.input :tipo_producto, label: "Nombre del Producto" %>
+  <%= f.input :precio, label: "Precio" %>
+  <%= f.input :cantidad, label: "Stock" %>
+  <%= f.submit "Añadir Producto", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,30 @@
+<h1>Mis Productos</h1>
+<%= link_to "Añadir Nuevo Producto", new_product_path, class: "btn btn-success" %>
+
+<table class="table mt-2">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Restan</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.tipo_producto %></td>
+        <td><%= product.precio %></td>
+        <td><%= product.cantidad %></td>
+        <td></td>
+        <td>
+          <%= link_to "Editar", edit_product_path(product), class: "btn btn-primary" %>
+          <%= link_to "Eliminar", product_path(product), method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

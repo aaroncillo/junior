@@ -20,7 +20,7 @@ class SalesController < ApplicationController
       @sale.product = Product.find(params[:product_id])
     end
     if @sale.save
-      redirect_to products_path
+      redirect_to sales_path
     else
       if params[:admin_id].present?
         @admin_products = Product.where(user_id: params[:admin_id])
@@ -52,7 +52,7 @@ class SalesController < ApplicationController
   def destroy
     @sale = Sale.find(params[:id])
     @sale.destroy
-    redirect_to products_path
+    redirect_to sales_path
   end
 
   def fetch_products

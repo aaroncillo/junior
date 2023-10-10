@@ -1,13 +1,13 @@
 <h1>Listado de productos</h1>
 <a href="<%= new_sale_path %>" class="btn btn-primary btn-icon-split">
   <span class="icon text-white-50">
-    <i class="fas fa-flag"></i>
+    <i class="fa-solid fa-square-plus"></i>
   </span>
   <span class="text">Crear Producto</span>
 </a>
 <a href="<%= sales_path(format: :xlsx) %>" class="btn btn-success btn-icon-split">
   <span class="icon text-white-50">
-      <i class="fas fa-file"></i>
+      <i class="fa-regular fa-file-excel"></i>
   </span>
   <span class="text">Exportar a Excel</span>
 </a>
@@ -30,7 +30,15 @@
         <td><%= sale.product.precio %></td>
         <td><%= sale.cantidad %></td>
         <td><%= sale.fecha %></td>
-        <td>botons</td>
+        <td>
+          <%= link_to sale_path(sale), class:"btn btn-danger", data:{turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+            <i class="fa-solid fa-circle-minus"></i>
+          <% end %>
+
+          <%= link_to edit_sale_path(sale), class:"btn btn-primary" do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

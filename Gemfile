@@ -82,3 +82,4 @@ end
 # Mis gemas
 
 gem "cloudinary"
+gem 'font-awesome-sass'
