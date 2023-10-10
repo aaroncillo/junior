@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @sale = Sale.new
+    @admin_products = Product.where(user_id: params[:admin_id])
   end
 
   def create
@@ -38,6 +40,14 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_path
   end
+
+  # acciones variadas
+
+  def get_products
+    @products = Product.where(user_id: params[:admin_id])
+    render json: { products: @products.map { |p| { id: p.id, name: p.tipo_producto } } }
+  end
+
 
   private
 

@@ -5,17 +5,32 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
+    if params[:admin_id].present?
+      @admin_products = Product.where(user_id: params[:admin_id])
+    else
+      @admin_products = []
+    end
   end
+
 
   def create
     @sale = Sale.new(sale_params)
     @sale.user = current_user
+    if params[:product_id]
+      @sale.product = Product.find(params[:product_id])
+    end
     if @sale.save
       redirect_to products_path
     else
+      if params[:admin_id].present?
+        @admin_products = Product.where(user_id: params[:admin_id])
+      else
+        @admin_products = []
+      end
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def show
     @sale = Sale.find(params[:id])
@@ -39,6 +54,13 @@ class SalesController < ApplicationController
     @sale.destroy
     redirect_to products_path
   end
+
+  def fetch_products
+    admin = User.find(params[:admin_id])
+    products = admin.products
+    render json: { products: products.map { |p| { id: p.id, tipo_producto: p.tipo_producto } } }
+  end
+
 
   private
 

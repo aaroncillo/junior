@@ -1,7 +1,8 @@
-<%= simple_form_for [@product, @sale] do |f| %>
+<%= simple_form_for [@product, @sale], html: { id: 'sale_form' } do |f| %>
 
-  <%= f.select :product_id, options_from_collection_for_select(Product.all, "id", "tipo_producto") %>
+  <%= select_tag :admin_id, options_from_collection_for_select(User.where(role: 'admin'), "id", "name", params[:admin_id]), prompt: "Select an Admin", onchange: "window.location.href = '?admin_id=' + this.value;" %>
+  <%= f.select :product_id, options_from_collection_for_select(@admin_products, "id", "tipo_producto") %>
   <%= f.input :cantidad %>
-  <%= f.input :fecha, order: [:day, :month, :year], html5: true %> %>
+  <%= f.input :fecha, order: [:day, :month, :year], html5: true %>
   <%= f.submit "Registrar Venta" %>
 <% end %>

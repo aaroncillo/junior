@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :products
   resources :sales
+  get 'fetch_products', to: 'sales#fetch_products'
 end
