@@ -3,11 +3,14 @@ class SalesController < ApplicationController
     if current_user.role == 'admin'
       admin_products_ids = Product.where(user: current_user).pluck(:id)
       @all_sales = Sale.where(product_id: admin_products_ids)
-      @pagy, @sales = pagy(@all_sales, items: 5)
+      @pagy, @sales = pagy(@all_sales, items: 10)
     else
       @all_sales = Sale.where(user: current_user)
-      @pagy, @sales = pagy(@all_sales, items: 5)
+      @pagy, @sales = pagy(@all_sales, items: 10)
     end
+
+    @total_venta = @sales.sum { |sales| sales.cantidad * sales.product.precio }
+    @cantidad_vendida = @sales.sum(&:cantidad)
 
     respond_to do |format|
       format.html

@@ -32,7 +32,7 @@
         <td><%= sale.id %></td>
         <td><%= sale.user.name %></td>
         <td><%= sale.product.tipo_producto %></td> <!-- Suponiendo que quieres mostrar el nombre del producto -->
-        <td><%= sale.product.precio %></td>
+        <td><%= number_to_currency(sale.product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
         <td><%= sale.cantidad %></td>
         <td><%= sale.fecha %></td>
         <td>
@@ -47,5 +47,13 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4" class="text-right"><strong>Total de Venta:</strong></td>
+      <td><%= number_to_currency(@total_venta, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+      <td class="text-right"><strong>Cantidad de Ventas:</strong></td>
+      <td><%= @cantidad_vendida %></td>
+    </tr>
+  </tfoot>
 </table>
 <%= pagy_bootstrap_nav(@pagy).html_safe %>

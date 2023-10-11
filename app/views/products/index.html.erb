@@ -17,7 +17,7 @@
       <tr>
         <td><%= product.id %></td>
         <td><%= product.tipo_producto %></td>
-        <td><%= product.precio %></td>
+        <td><%= number_to_currency(product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
         <td><%= product.cantidad %></td>
         <td>
           <% sold_quantity = Sale.where(product: product).sum(:cantidad) %>
@@ -37,10 +37,10 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="3" class="text-right"><strong>Total de Inversión:</strong></td>
-      <td><%= @total_inv %></td>
-      <td class="text-right"><strong>Total de Stock:</strong></td>
-      <td><%= @total_stock %></td>
+      <td colspan="3" class="text-right"><strong>Total de Venta:</strong></td>
+      <td><%= number_to_currency(@total_inv, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+      <td class="text-right"><strong>Stock Disponible:</strong></td>
+      <td><%= @remaining_stock %></td>
     </tr>
   </tfoot>
 </table>

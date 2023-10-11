@@ -6,7 +6,12 @@ class ProductsController < ApplicationController
     @products = current_user.products
     @total_stock = @products.sum(&:cantidad)
     @total_inv = @products.sum { |product| product.cantidad * product.precio }
-    @pagy, @products = pagy(@products, items: 5)
+    @pagy, @products = pagy(@products, items: 10)
+
+    @remaining_stock = @products.sum do |product|
+      sold_quantity = Sale.where(product: product).sum(:cantidad)
+      [0, product.cantidad - sold_quantity].max
+    end
   end
 
   def new
