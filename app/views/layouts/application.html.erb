@@ -14,30 +14,69 @@
   </head>
 
   <body id="page-top">
-    <!-- LOGO INICIO -->
-    <a class="sidebar-brand d-flex" href="/">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fa-brands fa-space-awesome"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">CHURRASCAL</div>
-    </a>
-    <!-- LOGO FIN -->
-    <!-- Sidebar VERSION ESCRITORIO -->
+    <!-- Sidebar VERSION MOVIL -->
     <div data-controller="menu">
       <button class="block sm:hidden" data-action="click->menu#open"><%= image_tag 'icons/menu.svg', width: 35, height: 35 %></button>
 
-      <div class="hidden sm:block">
-        <%= render partial: 'shared/items' %>
-      </div>
-      <!-- VERSION MOVIL -->
       <div class="sm:hidden absolute bg-white top-0 left-0 shadow z-10 h-full flex flex-col min-w-[35%] overflow-y-scroll ease-in-out duration-200 p-5 -translate-x-full" data-menu-target="items">
         <button class="mb-4" data-action="click->menu#close"><%= image_tag 'icons/close.svg', width: 35, height: 35 %></button>
         <%= render partial: 'shared/items' %>
       </div>
     </div>
-
     <!-- End of Sidebar -->
+
     <div id="wrapper">
+      <ul class="navbar-nav colorbarra sidebar sidebar-dark accordion collapse d-lg-block" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fa-brands fa-space-awesome"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">CHURRASCAL</div>
+        </a>
+
+        <hr class="sidebar-divider my-0">
+
+        <% if !user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fa-solid fa-house"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <!-- Divider -->
+          <hr class="sidebar-divider">
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= sales_path %>">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+              <span>Productos</span>
+            </a>
+          </li>
+          <hr class="sidebar-divider">
+          <% if current_user.role == "admin" %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= products_path %>">
+                <i class="fa-solid fa-socks"></i>
+                <span>Mi Stock</span>
+              </a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Mis Gráficos</span>
+              </a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Mejor Vendedor</span>
+              </a>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
