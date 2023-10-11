@@ -1,25 +1,35 @@
-<h2>Sign up</h2>
+<div class="custom-login-form mt-2 w-full sm:w-3/4 md:w-1/2 mx-auto">
+  <h2 class="title">Registro</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form' }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
+    <!-- Email Input -->
     <%= f.input :email,
                 required: true,
+                label: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email", placeholder: "Email", class: "input" }
+    %>
+
+    <!-- Password Input -->
     <%= f.input :password,
                 required: true,
+                label: false,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", placeholder: "Password", class: "input" }
+    %>
+
+    <!-- Password Confirmation Input -->
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+                label: false,
+                input_html: { autocomplete: "new-password", placeholder: "Confirm Password", class: "input" }
+    %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn-success" %>
+  <% end %>
+  <div class="mt-4">
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

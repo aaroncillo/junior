@@ -1,19 +1,22 @@
 <h1>Ventas</h1>
-<a href="<%= new_sale_path %>" class="btn btn-primary btn-icon-split">
+<!-- Botón Crear Producto -->
+<a href="<%= new_sale_path %>" class="btn btn-primary btn-icon-split my-2 my-md-0 mr-md-2">
   <span class="icon text-white-50">
     <i class="fa-solid fa-square-plus"></i>
   </span>
   <span class="text">Crear Producto</span>
 </a>
+
+<!-- Botón Exportar a Excel (solo para admin) -->
 <% if current_user.role == 'admin' %>
-  <a href="<%= sales_path(format: :xlsx) %>" class="btn btn-success btn-icon-split">
+  <a href="<%= sales_path(format: :xlsx) %>" class="btn btn-success btn-icon-split my-2 my-md-0">
     <span class="icon text-white-50">
         <i class="fa-regular fa-file-excel"></i>
     </span>
     <span class="text">Exportar a Excel</span>
   </a>
-<% else %>
 <% end %>
+
 <br><br>
 <div class="table-responsive">
   <table class="table">

@@ -1,0 +1,35 @@
+.custom-login-form {
+  background-color: #f7f7f7; /* Color de fondo del formulario */
+  padding: 40px; /* Relleno interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Sombra alrededor del formulario */
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 50px auto; /* Centrar el formulario y darle un margen superior */
+}
+
+.title {
+  font-size: 24px; /* Tamaño de fuente para el título */
+  margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+.input {
+  width: 100%; /* Ancho del input */
+  margin-bottom: 20px; /* Espacio entre inputs */
+  padding: 10px; /* Relleno interno de los inputs */
+  border-radius: 5px; /* Bordes redondeados de los inputs */
+  border: 1px solid #ccc; /* Borde de los inputs */
+}
+
+.button-confirm {
+  width: 100%; /* Ancho del botón */
+  padding: 10px; /* Relleno interno del botón */
+  background-color: #007BFF; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Quitar el borde del botón */
+  border-radius: 5px; /* Bordes redondeados del botón */
+  cursor: pointer; /* Estilo del cursor al pasar por encima del botón */
+}
+
+.button-confirm:hover {
+  background-color: #0056b3; /* Color de fondo del botón al pasar por encima */
+}
