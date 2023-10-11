@@ -30,61 +30,61 @@
                 <button class="block sm:hidden flex items-center p-2" data-action="click->menu#open">
                   <%= image_tag 'icons/menu.svg', width: 35, height: 35, class: "mr-2" %> <!-- Icono de Menú -->
                 </button>
-                <div class="fixed inset-0 bg-black opacity-50 hidden" data-menu-target="background"></div>
-                <div class="text-center sm:hidden absolute colorbarra top-0 left-0 shadow z-10 h-full flex flex-col min-w-[35%] overflow-y-scroll ease-in-out duration-200 p-5 -translate-x-full" data-menu-target="items">
+                <div class="text-white font-bold text-center sm:hidden absolute colorbarra top-0 left-0 shadow z-10 h-full flex flex-col min-w-[35%] overflow-y-scroll ease-in-out duration-200 p-5 -translate-x-full" data-menu-target="items">
                   <button class="d-flex justify-content-center mb-4" data-action="click->menu#close">
                     <%= image_tag 'icons/close.svg', width: 50, height: 50 %>
                   </button>
                   <%= render partial: 'shared/items' %>
                 </div>
+                <div class="fixed inset-0 bg-black opacity-50 hidden" data-menu-target="background"></div>
                 <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
                     <div class="h-full px-3 py-4 overflow-y-auto colorbarra dark:bg-gray-800">
                         <ul class="space-y-6 font-medium">
                             <a class="sidebar-brand d-flex align-items-center justify-content-center text-white font-bold" href="/">
                                 <div class="sidebar-brand-icon rotate-n-15">
-                                    <i class="fa-brands fa-space-awesome"></i>
+                                  <i class="fa-brands fa-space-awesome fa-3x"></i>
                                 </div>
-                                <div class="sidebar-brand-text mx-3">CHURRASCAL</div>
+                                <div class="sidebar-brand-text mx-3 text-2xl">CHURRASCAL</div>
                             </a>
                             <% if !user_signed_in? %>
-                            <hr class="sidebar-divider border-t-2 border-gray-700">
+                            <hr class="sidebar-divider border-t-2 border-gray-100">
                                 <li>
                                   <%= link_to "/", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
                                       <i class="fa-solid fa-house mr-2 align-middle"></i>
                                       <span>Home</span>
                                   <% end %>
                                 </li>
-                            <hr class="sidebar-divider border-t-2 border-gray-700">
+                            <hr class="sidebar-divider border-t-2 border-gray-100">
                             <% else %>
-                            <hr class="sidebar-divider border-t-2 border-gray-700">
+                            <hr class="sidebar-divider border-t-2 border-gray-100">
                                 <li>
                                   <%= link_to sales_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
                                       <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
                                       <span>Productos</span>
                                   <% end %>
                                 </li>
-                            <hr class="sidebar-divider border-t-2 border-gray-700">
+                            <hr class="sidebar-divider border-t-2 border-gray-100">
                                 <li>
-                                  <%= link_to products_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                  <%= link_to products_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
                                       <i class="fa-solid fa-socks mr-2 align-middle"></i>
                                       <span>Mi Stock</span>
                                   <% end %>
                                 </li>
-                            <hr class="sidebar-divider border-t-2 border-gray-700">
+                            <hr class="sidebar-divider border-t-2 border-gray-100">
                                 <li>
-                                  <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                  <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
                                       <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
                                       <span>Gráficos</span>
                                   <% end %>
                                 </li>
-                            <hr class="sidebar-divider border-t-2 border-gray-700">
+                            <hr class="sidebar-divider border-t-2 border-gray-100">
                                 <li>
-                                  <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                  <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
                                       <i class="fa-solid fa-user-group mr-2 align-middle"></i>
                                       <span>Mejores Vendedores</span>
                                   <% end %>
                                 </li>
-                            <hr class="sidebar-divider border-t-2 border-gray-700">
+                            <hr class="sidebar-divider border-t-2 border-gray-100">
                             <% end %>
                         </ul>
                     </div>

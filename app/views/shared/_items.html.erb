@@ -1,25 +1,25 @@
 <% if !user_signed_in? %>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Home", "/", class: "text-gray-700 block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "Home", "/", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
 <% else %>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Productos", sales_path, class: "text-gray-700 block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "Productos", sales_path, class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Mi Stock", products_path, class: "text-gray-700 block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "Mi Stock", products_path, class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Gráficos", "#", class: "text-gray-700 block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "Gráficos", "#", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Mejores Vendedores", "#", class: "text-gray-700 block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "Mejores Vendedores", "#", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
 <% end %>
