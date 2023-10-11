@@ -1,47 +1,49 @@
 <h1>Mi Stock</h1>
 <%= link_to "Añadir Nuevo Producto", new_product_path, class: "btn btn-success" %>
 
-<table class="table mt-2">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Producto</th>
-      <th>Precio</th>
-      <th>Stock</th>
-      <th>Restan</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
+<div class="table-responsive">
+  <table class="table mt-2">
+    <thead>
       <tr>
-        <td><%= product.id %></td>
-        <td><%= product.tipo_producto %></td>
-        <td><%= number_to_currency(product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
-        <td><%= product.cantidad %></td>
-        <td>
-          <% sold_quantity = Sale.where(product: product).sum(:cantidad) %>
-          <%= [0, product.cantidad.to_i - sold_quantity].max %>
-        </td>
-        <td>
-          <%= link_to product_path(product), class:"btn btn-danger", data:{turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-            <i class="fa-solid fa-circle-minus"></i>
-          <% end %>
-
-          <%= link_to edit_product_path(product), class:"btn btn-primary" do %>
-            <i class="fa-solid fa-pen-to-square"></i>
-          <% end %>
-        </td>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Restan</th>
+        <th>Acciones</th>
       </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3" class="text-right"><strong>Total de Venta:</strong></td>
-      <td><%= number_to_currency(@total_inv, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
-      <td class="text-right"><strong>Stock Disponible:</strong></td>
-      <td><%= @remaining_stock %></td>
-    </tr>
-  </tfoot>
-</table>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.tipo_producto %></td>
+          <td><%= number_to_currency(product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+          <td><%= product.cantidad %></td>
+          <td>
+            <% sold_quantity = Sale.where(product: product).sum(:cantidad) %>
+            <%= [0, product.cantidad.to_i - sold_quantity].max %>
+          </td>
+          <td>
+            <%= link_to product_path(product), class:"btn btn-danger", data:{turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <i class="fa-solid fa-circle-minus"></i>
+            <% end %>
+
+            <%= link_to edit_product_path(product), class:"btn btn-primary" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="text-right"><strong>Total de Venta:</strong></td>
+        <td><%= number_to_currency(@total_inv, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+        <td class="text-right"><strong>Stock Disponible:</strong></td>
+        <td><%= @remaining_stock %></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
 <%= pagy_bootstrap_nav(@pagy).html_safe %>
