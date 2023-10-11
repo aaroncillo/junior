@@ -84,6 +84,7 @@ gem "cloudinary"
 
 gem "pagy", "~> 6.1"
 
-gem 'axlsx_rails'
+gem 'caxlsx_rails'
+
 
 gem "tailwindcss-rails", "~> 2.0"
