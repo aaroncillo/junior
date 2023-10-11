@@ -1,25 +1,40 @@
 <% if !user_signed_in? %>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Home", "/", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "/", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" do %>
+      <i class="fa-solid fa-house mr-2 align-middle"></i>
+      <span>Home</span>
+    <% end %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
 <% else %>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Productos", sales_path, class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to sales_path, class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" do %>
+      <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
+      <span>Productos</span>
+    <% end %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Mi Stock", products_path, class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to products_path, class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" do %>
+      <i class="fa-solid fa-socks mr-2 align-middle"></i>
+      <span>Mi Stock</span>
+    <% end %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Gráficos", "#", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "Gráficos", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" do %>
+      <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
+      <span>Gráficos</span>
+    <% end %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
   <div class="py-2">
-    <%= link_to "Mejores Vendedores", "#", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" %>
+    <%= link_to "Mejores Vendedores", class: "block px-4 py-2 hover:bg-gray-100 rounded transition duration-150" do %>
+      <i class="fa-solid fa-user-group mr-2 align-middle"></i>
+      <span>Mejores Vendedores</span>
+    <% end %>
   </div>
 <hr class="sidebar-divider border-t-2 border-gray-700">
 <% end %>
