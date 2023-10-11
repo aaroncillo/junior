@@ -1,0 +1,8 @@
+<% if !user_signed_in? %>
+  <%= link_to "Home", "/" %>
+<% else %>
+  <%= link_to "Productos", sales_path %>
+  <%= link_to "Mi Stock", products_path %>
+  <%= link_to "Gráficos", "#" %>
+  <%= link_to "Mejores Vendedores", "#" %>
+<% end %>

@@ -8,66 +8,77 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body id="page-top">
+    <!-- Sidebar VERSION MOVIL -->
+    <div data-controller="menu">
+      <button class="block sm:hidden" data-action="click->menu#open"><%= image_tag 'icons/menu.svg', width: 35, height: 35 %></button>
 
+      <div class="sm:hidden absolute bg-white top-0 left-0 shadow z-10 h-full flex flex-col min-w-[35%] overflow-y-scroll ease-in-out duration-200 p-5 -translate-x-full" data-menu-target="items">
+        <button class="mb-4" data-action="click->menu#close"><%= image_tag 'icons/close.svg', width: 35, height: 35 %></button>
+        <%= render partial: 'shared/items' %>
+      </div>
+    </div>
+    <!-- End of Sidebar -->
     <div id="wrapper">
-      <ul class="navbar-nav colorbarra sidebar sidebar-dark accordion collapse d-lg-block" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fa-brands fa-space-awesome"></i>
+      <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+          <div class="h-full px-3 py-4 overflow-y-auto colorbarra dark:bg-gray-800">
+              <ul class="space-y-6 font-medium">
+                  <a class="sidebar-brand d-flex align-items-center justify-content-center text-white font-bold" href="/">
+                      <div class="sidebar-brand-icon rotate-n-15">
+                          <i class="fa-brands fa-space-awesome"></i>
+                      </div>
+                      <div class="sidebar-brand-text mx-3">CHURRASCAL</div>
+                  </a>
+                  <% if !user_signed_in? %>
+                  <hr class="sidebar-divider border-t-2 border-gray-700">
+                      <li>
+                        <%= link_to "/", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-house mr-2 align-middle"></i>
+                            <span>Home</span>
+                        <% end %>
+                      </li>
+                  <hr class="sidebar-divider border-t-2 border-gray-700">
+                  <% else %>
+                  <hr class="sidebar-divider border-t-2 border-gray-700">
+                      <li>
+                        <%= link_to sales_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
+                            <span>Productos</span>
+                        <% end %>
+                      </li>
+                  <hr class="sidebar-divider border-t-2 border-gray-700">
+                      <li>
+                        <%= link_to products_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-socks mr-2 align-middle"></i>
+                            <span>Mi Stock</span>
+                        <% end %>
+                      </li>
+                  <hr class="sidebar-divider border-t-2 border-gray-700">
+                      <li>
+                        <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
+                            <span>Gráficos</span>
+                        <% end %>
+                      </li>
+                  <hr class="sidebar-divider border-t-2 border-gray-700">
+                      <li>
+                        <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-user-group mr-2 align-middle"></i>
+                            <span>Mejores Vendedores</span>
+                        <% end %>
+                      </li>
+                  <hr class="sidebar-divider border-t-2 border-gray-700">
+                  <% end %>
+              </ul>
           </div>
-          <div class="sidebar-brand-text mx-3">CHURRASCAL</div>
-        </a>
-
-        <hr class="sidebar-divider my-0">
-
-        <% if !user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="fa-solid fa-house"></i>
-              <span>Home</span>
-            </a>
-          </li>
-          <!-- Divider -->
-          <hr class="sidebar-divider">
-        <% else %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= sales_path %>">
-              <i class="fa-solid fa-hand-holding-dollar"></i>
-              <span>Productos</span>
-            </a>
-          </li>
-          <hr class="sidebar-divider">
-          <% if current_user.role == "admin" %>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= products_path %>">
-                <i class="fa-solid fa-socks"></i>
-                <span>Mi Stock</span>
-              </a>
-            </li>
-            <hr class="sidebar-divider">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fa-solid fa-chart-pie"></i>
-                <span>Mis Gráficos</span>
-              </a>
-            </li>
-            <hr class="sidebar-divider">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fa-solid fa-user-group"></i>
-                <span>Mejor Vendedor</span>
-              </a>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-      <!-- End of Sidebar -->
-      <!-- Content Wrapper -->
+      </aside>
+      <div class="sm:ml-64">
+      </div>
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
@@ -100,7 +111,7 @@
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
+          <div class="container m-auto">
             <div class="copyright text-center my-auto">
               <span>Copyright &copy; Churrascal 2023</span>
             </div>
