@@ -13,20 +13,7 @@
   </head>
 
   <body id="page-top">
-    <div class="dropdown ml-auto">
-      <button class="btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#accordionSidebar" aria-controls="accordionSidebar" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
-      <div class="dropdown-content">
-        <% if !user_signed_in? %>
-          <%= link_to "Home", "/" %>
-        <% else %>
-          <%= link_to "Productos", sales_path %>
-          <%= link_to "Mi Stock", products_path %>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="collapse d-lg-block" id="accordionSidebar">
-    </div>
     <div id="wrapper">
       <ul class="navbar-nav colorbarra sidebar sidebar-dark accordion collapse d-lg-block" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
