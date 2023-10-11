@@ -28,8 +28,8 @@
     <div id="wrapper">
       <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
           <div class="h-full px-3 py-4 overflow-y-auto colorbarra dark:bg-gray-800">
-              <ul class="space-y-2 font-medium">
-                  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+              <ul class="space-y-6 font-medium">
+                  <a class="sidebar-brand d-flex align-items-center justify-content-center text-white font-bold" href="/">
                       <div class="sidebar-brand-icon rotate-n-15">
                           <i class="fa-brands fa-space-awesome"></i>
                       </div>
@@ -38,7 +38,7 @@
                   <% if !user_signed_in? %>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <a href="/" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
                               <i class="fa-solid fa-house mr-2 align-middle"></i>
                               <span>Home</span>
                           </a>
@@ -47,28 +47,28 @@
                   <% else %>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="<%= sales_path %>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <a href="<%= sales_path %>" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
                               <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
                               <span>Productos</span>
                           </a>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="<%= products_path %>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <a href="<%= products_path %>" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
                               <i class="fa-solid fa-socks mr-2 align-middle"></i>
                               <span>Mi Stock</span>
                           </a>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <a href="#" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
                               <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
                               <span>Gráficos</span>
                           </a>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <a href="#" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
                               <i class="fa-solid fa-user-group mr-2 align-middle"></i>
                               <span>Mejores Vendedores</span>
                           </a>
