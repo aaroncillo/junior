@@ -9,3 +9,16 @@
 .tipo {
   font-family: 'Young Serif', serif;
 }
+
+a.no-underline, a.no-underline:hover {
+  text-decoration: none;
+}
+#content-wrapper {
+  background-color: #2D3748;  /* Este es un color gris oscuro de Tailwind CSS. Puedes ajustar el código hexadecimal según el color exacto que desees. */
+  min-height: 100vh; /* Asegura que el contenido ocupe al menos toda la altura de la ventana del navegador */
+}
+.sticky-footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}

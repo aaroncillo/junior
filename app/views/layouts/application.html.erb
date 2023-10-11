@@ -24,7 +24,6 @@
       </div>
     </div>
     <!-- End of Sidebar -->
-
     <div id="wrapper">
       <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
           <div class="h-full px-3 py-4 overflow-y-auto colorbarra dark:bg-gray-800">
@@ -38,50 +37,48 @@
                   <% if !user_signed_in? %>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="/" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <i class="fa-solid fa-house mr-2 align-middle"></i>
-                              <span>Home</span>
-                          </a>
+                        <%= link_to "/", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-house mr-2 align-middle"></i>
+                            <span>Home</span>
+                        <% end %>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                   <% else %>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="<%= sales_path %>" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
-                              <span>Productos</span>
-                          </a>
+                        <%= link_to sales_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
+                            <span>Productos</span>
+                        <% end %>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="<%= products_path %>" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <i class="fa-solid fa-socks mr-2 align-middle"></i>
-                              <span>Mi Stock</span>
-                          </a>
+                        <%= link_to products_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-socks mr-2 align-middle"></i>
+                            <span>Mi Stock</span>
+                        <% end %>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="#" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
-                              <span>Gráficos</span>
-                          </a>
+                        <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
+                            <span>Gráficos</span>
+                        <% end %>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                       <li>
-                          <a href="#" class="flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <i class="fa-solid fa-user-group mr-2 align-middle"></i>
-                              <span>Mejores Vendedores</span>
-                          </a>
+                        <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                            <i class="fa-solid fa-user-group mr-2 align-middle"></i>
+                            <span>Mejores Vendedores</span>
+                        <% end %>
                       </li>
                   <hr class="sidebar-divider border-t-2 border-gray-700">
                   <% end %>
               </ul>
           </div>
       </aside>
-     <div class="sm:ml-64">
-    </div>
-      <!-- End of Sidebar -->
-      <!-- Content Wrapper -->
+      <div class="sm:ml-64">
+      </div>
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
@@ -114,7 +111,7 @@
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
+          <div class="container m-auto">
             <div class="copyright text-center my-auto">
               <span>Copyright &copy; Churrascal 2023</span>
             </div>
