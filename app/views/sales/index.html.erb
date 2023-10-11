@@ -15,45 +15,47 @@
 <% else %>
 <% end %>
 <br><br>
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Vendedor</th>
-      <th>Producto</th>
-      <th>Precio</th>
-      <th>Cantidad</th>
-      <th>Fecha</th>
-      <th>Acción</th>
-  </thead>
-  <tbody>
-    <% @sales.each do |sale| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= sale.id %></td>
-        <td><%= sale.user.name %></td>
-        <td><%= sale.product.tipo_producto %></td> <!-- Suponiendo que quieres mostrar el nombre del producto -->
-        <td><%= number_to_currency(sale.product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
-        <td><%= sale.cantidad %></td>
-        <td><%= sale.fecha %></td>
-        <td>
-          <%= link_to sale_path(sale), class:"btn btn-danger", data:{turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-            <i class="fa-solid fa-circle-minus"></i>
-          <% end %>
+        <th>ID</th>
+        <th>Vendedor</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Fecha</th>
+        <th>Acción</th>
+    </thead>
+    <tbody>
+      <% @sales.each do |sale| %>
+        <tr>
+          <td><%= sale.id %></td>
+          <td><%= sale.user.name %></td>
+          <td><%= sale.product.tipo_producto %></td> <!-- Suponiendo que quieres mostrar el nombre del producto -->
+          <td><%= number_to_currency(sale.product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+          <td><%= sale.cantidad %></td>
+          <td><%= sale.fecha %></td>
+          <td>
+            <%= link_to sale_path(sale), class:"btn btn-danger", data:{turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <i class="fa-solid fa-circle-minus"></i>
+            <% end %>
 
-          <%= link_to edit_sale_path(sale), class:"btn btn-primary" do %>
-            <i class="fa-solid fa-pen-to-square"></i>
-          <% end %>
-        </td>
+            <%= link_to edit_sale_path(sale), class:"btn btn-primary" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" class="text-right"><strong>Total de Venta:</strong></td>
+        <td><%= number_to_currency(@total_venta, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+        <td class="text-right"><strong>Cantidad de Ventas:</strong></td>
+        <td><%= @cantidad_vendida %></td>
       </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="4" class="text-right"><strong>Total de Venta:</strong></td>
-      <td><%= number_to_currency(@total_venta, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
-      <td class="text-right"><strong>Cantidad de Ventas:</strong></td>
-      <td><%= @cantidad_vendida %></td>
-    </tr>
-  </tfoot>
-</table>
+    </tfoot>
+  </table>
+</div>
 <%= pagy_bootstrap_nav(@pagy).html_safe %>
