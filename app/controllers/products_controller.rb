@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
-  before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_admin, only: [:index, :new, :create, :edit, :update, :destroy]
+
 
   def index
     @products = current_user.products

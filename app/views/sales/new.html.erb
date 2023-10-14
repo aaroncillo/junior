@@ -6,7 +6,7 @@
           <form class="form">
                 <div class="d-flex justify-content-around mb-3">
                   <%= select_tag :admin_id, options_from_collection_for_select(User.where(role: 'admin'), "id", "name", params[:admin_id]), prompt: "Selecciona un Distribuidor", onchange: "window.location.href = '?admin_id=' + this.value;", class: 'form-control w-45' %>
-                  <%= f.select :product_id, options_from_collection_for_select(@admin_products, "id", "tipo_producto"), { prompt: "Selecciona un Producto" }, class: 'form-control w-45' %>
+                  <%= f.select :product_id, options_for_select(product_options_with_remaining_stock(@admin_products), selected: f.object.product_id), { prompt: "Selecciona un Producto" }, class: 'form-control w-45' %>
                 </div>
                 <%= f.input :cantidad, label: "Cantidad", input_html: { class: 'form-control' } %>
                 <%= f.input :fecha, order: [:day, :month, :year], html5: true, input_html: { class: 'form-control' } %>
