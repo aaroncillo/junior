@@ -41,60 +41,67 @@
                     <div class="h-full px-3 py-4 overflow-y-auto colorbarra dark:bg-gray-800">
                         <ul class="space-y-6 font-medium">
                             <a class="sidebar-brand d-flex align-items-center justify-content-center text-white font-bold" href="/">
-                                <div class="sidebar-brand-icon rotate-n-15">
-                                  <i class="fa-brands fa-space-awesome fa-3x"></i>
-                                </div>
-                                <div class="sidebar-brand-text mx-3 text-2xl">CHURRASCAL</div>
+                              <div class="sidebar-brand-icon rotate-n-15">
+                                <i class="fa-brands fa-space-awesome fa-3x"></i>
+                              </div>
+                              <div class="sidebar-brand-text mx-3 text-2xl">CHURRASCAL</div>
                             </a>
-                          <% if !user_signed_in? %>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                          <li>
-                                            <%= link_to "/", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
-                                                <i class="fa-solid fa-house mr-2 align-middle"></i>
-                                                <span>Home</span>
-                                            <% end %>
-                                          </li>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                      <% elsif current_user.role == 'saler' %>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                          <li>
-                                            <%= link_to sales_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
-                                                <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
-                                                <span>Productos</span>
-                                            <% end %>
-                                          </li>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                      <% elsif current_user.role == 'admin' %>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                          <li>
-                                            <%= link_to sales_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
-                                                <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
-                                                <span>Productos</span>
-                                            <% end %>
-                                          </li>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                          <li>
-                                            <%= link_to products_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
-                                                <i class="fa-solid fa-socks mr-2 align-middle"></i>
-                                                <span>Mi Stock</span>
-                                            <% end %>
-                                          </li>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                          <li>
-                                            <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
-                                                <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
-                                                <span>Gráficos</span>
-                                            <% end %>
-                                          </li>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                                          <li>
-                                            <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
-                                                <i class="fa-solid fa-user-group mr-2 align-middle"></i>
-                                                <span>Mejores Vendedores</span>
-                                            <% end %>
-                                          </li>
-                                      <hr class="sidebar-divider border-t-2 border-gray-100">
-                              <% end %>
+                            <% if !user_signed_in? %>
+                              <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <li>
+                                  <%= link_to "/", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                      <i class="fa-solid fa-house mr-2 align-middle"></i>
+                                      <span>Home</span>
+                                  <% end %>
+                                </li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <% elsif current_user.role == 'saler' %>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <li>
+                                  <%= link_to sales_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                      <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
+                                      <span>Productos</span>
+                                  <% end %>
+                                </li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <li>
+                                  <%= link_to stock_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                      <i class="fa-solid fa-boxes mr-2 align-middle"></i>
+                                      <span>Ver Stock</span>
+                                  <% end %>
+                                </li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <% elsif current_user.role == 'admin' %>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <li>
+                                  <%= link_to sales_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                      <i class="fa-solid fa-hand-holding-dollar mr-2 align-middle"></i>
+                                      <span>Productos</span>
+                                  <% end %>
+                                </li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <li>
+                                  <%= link_to products_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
+                                      <i class="fa-solid fa-socks mr-2 align-middle"></i>
+                                      <span>Mi Stock</span>
+                                  <% end %>
+                                </li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <li>
+                                  <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
+                                      <i class="fa-solid fa-chart-pie mr-2 align-middle"></i>
+                                      <span>Gráficos</span>
+                                  <% end %>
+                                </li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                <li>
+                                  <%= link_to "#", class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-100 group no-underline" do %>
+                                      <i class="fa-solid fa-user-group mr-2 align-middle"></i>
+                                      <span>Mejores Vendedores</span>
+                                  <% end %>
+                                </li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                            <% end %>
                         </ul>
                     </div>
                 </aside>

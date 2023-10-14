@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :check_admin, only: [:index, :new, :create, :edit, :update, :destroy]
 
-
   def index
     @products = current_user.products
     @total_stock = @products.sum(&:cantidad)
@@ -58,6 +57,13 @@ class ProductsController < ApplicationController
   def get_products
     @products = Product.where(user_id: params[:admin_id])
     render json: { products: @products.map { |p| { id: p.id, name: p.tipo_producto } } }
+  end
+
+  def stock
+    @selected_admin = params[:admin_id].present? ? User.find(params[:admin_id]) : current_user
+    @products = Product.where(user: @selected_admin)
+    @admin1_products = User.find(1).products
+    @admin2_products = User.find(2).products
   end
 
 
