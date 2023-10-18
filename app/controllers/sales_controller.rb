@@ -1,16 +1,34 @@
 class SalesController < ApplicationController
   def index
+    week_offset = params[:week_offset].present? ? params[:week_offset].to_i : 0
+    # Ajustar el inicio y el fin de la semana para que sea de sábado a viernes
+    start_of_week = (Time.now.beginning_of_week - 2.days).beginning_of_day - week_offset.weeks
+    end_of_week = (Time.now.beginning_of_week + 4.days).end_of_day - week_offset.weeks
+
+    # Formatear las fechas
+    @formatted_start_of_week = start_of_week.strftime('%d/%m/%Y')
+    @formatted_end_of_week = end_of_week.strftime('%d/%m/%Y')
+
     if current_user.role == 'admin'
       admin_products_ids = Product.where(user: current_user).pluck(:id)
-      @all_sales = Sale.where(product_id: admin_products_ids)
-      @pagy, @sales = pagy(@all_sales, items: 10)
+      @all_sales = Sale.where(product_id: admin_products_ids, fecha: start_of_week..end_of_week)
     else
-      @all_sales = Sale.where(user: current_user)
-      @pagy, @sales = pagy(@all_sales, items: 10)
+      @all_sales = Sale.where(user: current_user, fecha: start_of_week..end_of_week)
     end
+
+    @total_venta = @all_sales.joins(:product).sum('products.precio * sales.cantidad')
+    @cantidad_vendida = @all_sales.sum(:cantidad)
+    @pagy, @sales = pagy(@all_sales, items: 10)
 
     @total_venta = @sales.sum { |sales| sales.cantidad * sales.product.precio }
     @cantidad_vendida = @sales.sum(&:cantidad)
+
+    # suma productos stgo
+
+    @total_venta_stgo = @sales.sum { |sales| sales.cantidad * sales.product.precio_stgo }
+
+    # producto precio stgo  - precio
+    @comision = @sales.sum { |sales| sales.cantidad * (sales.product.precio_stgo - sales.product.precio) }
 
     respond_to do |format|
       format.html

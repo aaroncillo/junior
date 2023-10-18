@@ -1,0 +1,21 @@
+<h1>Editar Producto</h1>
+
+<%= simple_form_for @product do |f| %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="m-3 p-3 border shadow-lg rounded">
+          <!-- No necesitas otro elemento <form> aquí, ya que simple_form_for ya crea un formulario para ti. -->
+          <%= f.input :tipo_producto, autofocus: true, label: "Nombre del Producto" %>
+          <%= f.input :precio, label: "Precio Iquique" %>
+          <%= f.input :precio_stgo, label: "Precio Santiago" %>
+          <%= f.input :cantidad, label: "Cantidad" %>
+          <%= f.input :description, label: "Descripción" %>
+          <div class="text-center">
+            <%= f.submit "Actualizar", class: 'btn btn-success' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
