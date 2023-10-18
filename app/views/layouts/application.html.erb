@@ -70,6 +70,13 @@
                                       <span>Ver Stock</span>
                                   <% end %>
                                 </li>
+                                <li>
+                                <hr class="sidebar-divider border-t-2 border-gray-100">
+                                  <%= link_to stgoiqq_path, class: "flex items-center p-2 text-white font-bold rounded-lg hover:bg-gray-500 dark:hover:bg-gray-700 group no-underline" do %>
+                                      <i class="fa-solid fa-boxes mr-2 align-middle"></i>
+                                      <span>Valores</span>
+                                  <% end %>
+                                </li>
                                 <hr class="sidebar-divider border-t-2 border-gray-100">
                                 <% elsif current_user.role == 'admin' %>
                                 <hr class="sidebar-divider border-t-2 border-gray-100">

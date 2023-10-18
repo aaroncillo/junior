@@ -66,6 +66,13 @@ class ProductsController < ApplicationController
     @admin2_products = User.find(2).products
   end
 
+  def stgoiqq
+    @selected_admin = params[:admin_id].present? ? User.find(params[:admin_id]) : current_user
+    @products = Product.where(user_id: params[:admin_id])
+    @admin1_products = User.find(1).products
+    @admin2_products = User.find(2).products
+  end
+
 
   private
 

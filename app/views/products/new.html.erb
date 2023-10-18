@@ -7,8 +7,10 @@
         <div class="m-3 p-3 border shadow-lg rounded">
           <form class="form">
                 <%= f.input :tipo_producto, autofocus: true, label: "Nombre del Producto" %>
-                <%= f.input :precio, label: "Precio" %>
+                <%= f.input :precio, label: "Precio Iquique" %>
+                <%= f.input :precio_stgo, label: "Precio Santiago" %>
                 <%= f.input :cantidad, label: "Cantidad" %>
+                <%= f.input :description, label: "Descripción" %>
                 <div class="text-center">
                   <%= f.submit class: 'btn btn-success' %>
                 </div>
