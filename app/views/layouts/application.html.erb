@@ -41,10 +41,9 @@
                     <div class="h-full px-3 py-4 overflow-y-auto colorbarra dark:bg-gray-800">
                         <ul class="space-y-6 font-medium">
                             <a class="sidebar-brand d-flex align-items-center justify-content-center text-white font-bold" href="/">
-                              <div class="sidebar-brand-icon rotate-n-15">
-                                <i class="fa-brands fa-space-awesome fa-3x"></i>
+                              <div class="sidebar-brand-icon">
+                                <%= image_tag 'steel.png', width: 300, height: 350 %>
                               </div>
-                              <div class="sidebar-brand-text mx-3 text-2xl">CHURRASCAL</div>
                             </a>
                             <% if !user_signed_in? %>
                               <hr class="sidebar-divider border-t-2 border-gray-100">

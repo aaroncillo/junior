@@ -1,59 +1,57 @@
-
-  <div class="row">
-    <div class="col-6 text-center">
-      <div class="badge bg-primary text-wrap mt-1" style="width: 10rem; font-size: 20px;">
-          Stock Valcal
-      </div>
-      <div class="table-responsive">
-        <table class="table mt-2">
-          <thead class="thead-dark">
-            <tr>
-              <th>Producto</th>
-              <th>Venta en Santiago</th>
-              <th>Valor a Iquique</th>
-              <th>Descripción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @admin2_products.each do |product| %>
-              <tr>
-                <td><%= product.tipo_producto %></td>
-                <td><%= number_to_currency(product.precio_stgo, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td></td>
-                <td><%= number_to_currency(product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td></td>
-                <td><%= product.description %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+<div class="row">
+    <div class="col-md-6 col-12 text-center">
+        <div class="badge bg-primary text-wrap mt-1" style="width: 10rem; font-size: 20px;">
+            Valores Valcal
+        </div>
+        <div class="table-responsive">
+            <table class="table mt-2">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Venta en Santiago</th>
+                        <th>Valor a Iquique</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @admin2_products.each do |product| %>
+                    <tr>
+                        <td><%= product.tipo_producto %></td>
+                        <td><%= number_to_currency(product.precio_stgo, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+                        <td><%= number_to_currency(product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+                        <td><%= product.description %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="col-6 text-center">
-      <div class="badge bg-primary text-wrap mt-1" style="width: 10rem; font-size: 20px;">
-          Stock Planchas
-      </div>
-      <div class="table-responsive">
-        <table class="table mt-2">
-          <thead class="thead-dark">
-            <tr>
-              <th>Producto</th>
-              <th>Venta en Santiago</th>
-              <th>Valor a Iquique</th>
-              <th>Descripción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @admin1_products.each do |product| %>
-              <tr>
-                <td><%= product.tipo_producto %></td>
-                <td><%= number_to_currency(product.precio_stgo, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td></td>
-                <td><%= number_to_currency(product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td></td>
-                <td><%= product.description %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+    <div class="col-md-6 col-12 text-center">
+        <div class="badge bg-primary text-wrap mt-1" style="width: 10rem; font-size: 20px;">
+            Valores Planchas
+        </div>
+        <div class="table-responsive">
+            <table class="table mt-2">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Venta en Santiago</th>
+                        <th>Valor a Iquique</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @admin1_products.each do |product| %>
+                    <tr>
+                        <td><%= product.tipo_producto %></td>
+                        <td><%= number_to_currency(product.precio_stgo, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+                        <td><%= number_to_currency(product.precio, precision: 0, unit: "$", separator: ",", delimiter: ".") %></td>
+                        <td><%= product.description %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-  </div>
+</div>
