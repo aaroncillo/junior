@@ -9,6 +9,9 @@ class SalesController < ApplicationController
     @formatted_start_of_week = start_of_week.strftime('%d/%m/%Y')
     @formatted_end_of_week = end_of_week.strftime('%d/%m/%Y')
 
+    # obtener si estoy en la semana actual.
+    @current_week = week_offset == 0
+
     if current_user.role == 'admin'
       admin_products_ids = Product.where(user: current_user).pluck(:id)
       @all_sales = Sale.where(product_id: admin_products_ids, fecha: start_of_week..end_of_week)
@@ -25,10 +28,10 @@ class SalesController < ApplicationController
 
     # suma productos stgo
 
-    @total_venta_stgo = @sales.sum { |sales| sales.cantidad * sales.product.precio_stgo }
+@total_venta_stgo = @sales.sum { |sales| sales.cantidad.to_i * sales.product.precio_stgo.to_i }
 
     # producto precio stgo  - precio
-    @comision = @sales.sum { |sales| sales.cantidad * (sales.product.precio_stgo - sales.product.precio) }
+    @comision = @sales.sum { |sales| sales.cantidad.to_i * (sales.product.precio_stgo.to_i - sales.product.precio.to_i) }
 
     respond_to do |format|
       format.html
@@ -72,13 +75,18 @@ class SalesController < ApplicationController
   end
 
   def edit
-    @sale = Sale.find_by(id: params[:id])
+    @sale = Sale.find(params[:id])
+    if params[:admin_id].present?
+      @admin_products = Product.where(user_id: params[:admin_id])
+    else
+      @admin_products = []
+    end
   end
 
   def update
     @sale = Sale.find(params[:id])
     if @sale.update(sale_params)
-      redirect_to products_path
+      redirect_to sales_path
     else
       render 'edit', status: :unprocessable_entity
     end

@@ -1,8 +1,11 @@
 <h1>Ventas</h1>
-<%= link_to "Semana anterior", sales_path(week_offset: (params[:week_offset].present? ? params[:week_offset].to_i : 0) + 1), class: "btn btn-primary" %>
+<%= link_to "Semana anterior", sales_path(week_offset: (params[:week_offset].present? ? params[:week_offset].to_i : 0) + 1), class: "btn btn-secondary" %>
 <%= link_to "Semana siguiente", sales_path(week_offset: (params[:week_offset].present? ? params[:week_offset].to_i : 0) - 1), class: "btn btn-primary" %>
 <p class="text-center">
-  Mostrando ventas de la semana del <%= @formatted_start_of_week %> al <%= @formatted_end_of_week %>
+  Ventas de la semana del <%= @formatted_start_of_week %> al <%= @formatted_end_of_week %>
+  <% if @current_week %>
+    <p class="text-center">Estás en la semana actual.</p>
+  <% end %>
 </p>
 <!-- Botón Crear Producto -->
 <a href="<%= new_sale_path %>" class="btn btn-primary btn-icon-split my-2 my-md-0 mr-md-2">
