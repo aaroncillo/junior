@@ -36,10 +36,16 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find(params[:id])
+    if params[:admin_id].present?
+      @admin_products = Product.where(user_id: params[:admin_id])
+    else
+      @admin_products = []
+    end
   end
 
   def update
+    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to products_path
     else
@@ -77,7 +83,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:tipo_producto, :precio, :cantidad)
+    params.require(:product).permit(:tipo_producto, :precio, :cantidad, :precio_stgo, :description)
   end
 
   def set_product
